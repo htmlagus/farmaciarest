@@ -83,11 +83,32 @@ class FarmaciaModel
     
         if ($orderBy) {
             switch($orderBy) {
+                case 'id':
+                    $sql .= ' ORDER BY compra_id ' . $orderDirection;
+                    break;
+
+                case 'cantidad':
+                    $sql .= ' ORDER BY cantidad ' . $orderDirection;
+                    break;
+
                 case 'fecha':
                     $sql .= ' ORDER BY fecha_compra ' . $orderDirection;
                     break;
-                case 'id':
-                    $sql .= ' ORDER BY compra_id ' . $orderDirection;
+                    
+                case 'producto':
+                    $sql .= ' ORDER BY nombre_producto ' . $orderDirection;
+                    break;
+
+                 case 'droga':
+                    $sql .= ' ORDER BY nombre_droga ' . $orderDirection;
+                    break;
+
+                case 'precio':
+                    $sql .= ' ORDER BY precio ' . $orderDirection;
+                    break;
+                    
+                case 'cliente':
+                    $sql .= ' ORDER BY cliente_foranea_id ' . $orderDirection;
                     break;
             }
         }
