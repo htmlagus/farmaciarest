@@ -151,4 +151,12 @@ class FarmaciaModel
         $query = $this->db->prepare('UPDATE compras SET cantidad = ?, fecha_compra = ?, nombre_producto = ?, nombre_droga = ?, precio = ?, cliente_foranea_id = ?WHERE compra_id = ?');
         $query->execute([$cantidad, $fecha_compra, $nombre_producto, $nombre_droga, $precio, $cliente_foranea_id, $id]);
     }
+
+    public function getClientById($cliente_id)
+    {
+        $query = $this->db->prepare('SELECT * FROM clientes WHERE cliente_id = ?');
+        $query->execute([$cliente_id]);
+
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
 }

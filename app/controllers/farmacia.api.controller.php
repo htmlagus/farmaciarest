@@ -60,6 +60,12 @@ class FarmaciaApiController {
         $precio = $req->body->precio;
         $cliente_foranea_id = $req->body->cliente_foranea_id;
 
+        $cliente = $this->model->getClientById($cliente_foranea_id);
+
+        if (!$cliente) {
+        return $this->view->response("El cliente con ID $cliente_foranea_id no existe", 404);
+        }
+
         $id = $this->model->addMedicamento($cantidad, $fecha_compra, $nombre_producto, $nombre_droga, $precio, $cliente_foranea_id);
 
         if (!$id) {
@@ -81,7 +87,8 @@ class FarmaciaApiController {
         }
 
          // valido los datos
-         if (empty($req->body->cantidad) || empty($req->body->precio) || empty($req->body->cliente_foranea_id)) {
+         if (empty($req->body->cantidad) || empty($req->body->fecha_compra) || empty($req->body->nombre_producto) || empty($req->body->nombre_droga) 
+            || empty($req->body->precio) || empty($req->body->cliente_foranea_id)) {
             return $this->view->response('Faltan completar datos', 400);
         }
 
@@ -92,6 +99,12 @@ class FarmaciaApiController {
         $nombre_droga = $req->body->nombre_droga;
         $precio = $req->body->precio;
         $cliente_foranea_id = $req->body->cliente_foranea_id;
+
+        $cliente = $this->model->getClientById($cliente_foranea_id);
+
+        if (!$cliente) {
+        return $this->view->response("El cliente con ID $cliente_foranea_id no existe", 404);
+        }
 
          // actualiza la tarea
          $this->model->updateMedicamento($id, $cantidad, $fecha_compra, $nombre_producto, $nombre_droga, $precio, $cliente_foranea_id);
