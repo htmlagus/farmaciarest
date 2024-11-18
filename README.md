@@ -12,8 +12,8 @@
 - http://localhost/farmaciarest/api/compras?orderBy=campo&orderDirection=desc (GET) Ordenar por campo descendente.
 
 ### Ejemplos
-- http://localhost/farmacia/api/compras?orderBy=fecha
-- http://localhost/farmacia/api/compras?orderBy=precio&orderDirection=desc
+- http://localhost/farmaciarest/api/compras?orderBy=fecha
+- http://localhost/farmaciarest/api/compras?orderBy=precio&orderDirection=desc
 
 # DER
 ![Diagrama entidad relación](DIAGRAMA.png)
